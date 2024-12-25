@@ -2,10 +2,17 @@
 
 Synergistic Spotting and Recognition of Micro-Expression via Temporal State Transition [ICASSP 2025]
 
-<img src="./figures/framework.jpg" alt="framework" style="zoom: 30%;" />
 
 
-<img src="./figures/result.jpg" alt="framework" style="zoom: 50%;" />
+Framework:
+
+<img src="./figures/framework.jpg" alt="framework" style="zoom: 25%;" />
+
+
+
+Visualization results
+
+<img src="./figures/result.jpg" alt="framework" style="zoom: 35%;" />
 
 
 
