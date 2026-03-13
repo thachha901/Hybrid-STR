@@ -1,0 +1,20 @@
+# datasets
+dataset/
+data/
+videos/
+
+# model weights
+*.pt
+*.pth
+*.ckpt
+*.pkl
+
+# numpy
+*.npy
+
+# cache
+__pycache__/
+.ipynb_checkpoints
+
+# mac
+.DS_Store
