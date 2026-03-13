@@ -30,12 +30,19 @@ def pseudo_labeling(frame_skip, dataset, final_samples, final_emotions, label_di
                 onset = sample[0] + 1
                 apex = sample[1]
                 offset = sample[2] - 1
-                start = onset #int((onset+apex)/2)
-                end = offset #int((offset+apex)/2)
-                for frame_index, frame in enumerate(range(start, end+1)):
+
+                length = max(1, offset - onset + 1)
+                sigma = max(1.0, length / 3.0)   # thay vì /4 hoặc nhỏ hơn
+
+
+                for frame in range(onset, offset + 1):
                     if frame < len(pseudo_y_each):
-                        pseudo_y_each[frame] = 1 # Hard label
+                        # Gaussian centered at apex
+                        dist = frame - apex
+                        soft_val = np.exp(-0.5 * (dist / sigma) ** 2)  # ∈ (0,1]
+                        pseudo_y_each[frame] = max(pseudo_y_each[frame], soft_val)
                         pseudo_y1_each[frame] = label_dict[final_emotions[subject_index][video_index][sample_index]]
+
             pseudo_y_group = []
             pseudo_y1_group = []
             for i in range(len(dataset[video_count])):
